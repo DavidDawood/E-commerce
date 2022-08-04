@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { FilterFindItem, GetItemData } from "../../services/items";
 import styles from "./ProductScreen.module.scss";
+import ProductCard from "../../components/ProductCard";
 
 function ProductScreen() {
     const { searchTerm } = useParams();
@@ -16,12 +17,22 @@ function ProductScreen() {
                 setHeading(`Found results for '${searchTerm}'...`);
             } catch (e) {
                 setHeading(e.message);
+                setItems([]);
             }
         };
         wrapper();
     }, [searchTerm]);
 
-    return <div>{searchTerm && <h2>{heading}</h2>}</div>;
+    return (
+        <div>
+            <div>{searchTerm && <h2>{heading}</h2>}</div>
+            <div className={styles.grid}>
+                {items.map((item) => (
+                    <ProductCard key={item.id} Product={item}></ProductCard>
+                ))}
+            </div>
+        </div>
+    );
 }
 
 export default ProductScreen;
