@@ -1,18 +1,23 @@
 import { useEffect } from "react";
 import { GetItemData } from "./services/items";
 import "./App.scss";
-import { Route, Routes } from "react-router-dom";
-import Nav from "./components/Nav";
-import Footer from "./components/Footer";
+import { Route, Routes, useNavigate } from "react-router-dom";
+import Nav from "./containers/Nav";
+import Footer from "./containers/Footer";
+import Cart from "./containers/Cart";
+import ProductScreen from "./containers/ProductScreen/ProductScreen";
+
 function App() {
-    useEffect(() => {
-        GetItemData().then((x) => console.log(x));
-    }, []);
+    const navigate = useNavigate();
+    useEffect(() => navigate("/Home"), []);
     return (
         <div className="App">
             <Nav />
             <Routes>
-                <Route path="/shopping_cart" element={<></>}></Route>
+                <Route path="/Home" element={<>Home</>} />
+                <Route path="/shopping_cart" element={<Cart />} />
+                <Route path="/Search/:searchTerm" element={<ProductScreen />} />
+                <Route path="/Search/" element={<ProductScreen />} />
             </Routes>
             <Footer />
         </div>
