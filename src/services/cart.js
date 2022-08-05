@@ -1,5 +1,8 @@
 import { CartEmpty } from "./errors";
-export const GetCartItems = () => {};
+export const GetCartItems = () => {
+    if (!sessionStorage.getItem("CartProducts")) throw CartEmpty;
+    return sessionStorage.getItem("CartProducts");
+};
 export const RemoveItemCount = (item) => {};
 export const AddItemCount = (item) => {};
 export const RemoveCartItem = (item) => {};
