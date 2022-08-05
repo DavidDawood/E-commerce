@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import App from "./App";
-import { FilterFindItem } from "./services/items";
+import { FilterFindItem, GetItemById } from "./services/items";
 import { NoItemFound } from "./services/errors";
 
 const ItemLayout = [
@@ -63,6 +63,18 @@ describe("Pure Function Testing", () => {
             calculator,
         ]);
         expect(() => FilterFindItem(ItemLayout, "lkajsdlakjsd")).toThrowError(
+            NoItemFound,
+        );
+    });
+
+    it("FindItemById", () => {
+        expect(GetItemById(ItemLayout, "417x7rn3l24%%#L@km4")).toStrictEqual(
+            airFryer,
+        );
+        expect(() => GetItemById(ItemLayout, "ada*J3nAKDdD")).toThrowError(
+            NoItemFound,
+        );
+        expect(() => GetItemById(ItemLayout, "ID: 14")).toThrowError(
             NoItemFound,
         );
     });

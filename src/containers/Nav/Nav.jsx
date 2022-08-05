@@ -24,7 +24,7 @@ export function Nav() {
 
     return (
         <div>
-            <NavLink to={"/Home"}>
+            <NavLink to={""}>
                 <FontAwesomeIcon icon={faHouse} size="2x" />
             </NavLink>
             <input

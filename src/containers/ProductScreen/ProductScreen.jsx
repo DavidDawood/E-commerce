@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { FilterFindItem, GetItemData } from "../../services/items";
+import {
+    FilterFindItem,
+    GetItemDataFromSessionStorage,
+} from "../../services/items";
 import styles from "./ProductScreen.module.scss";
 import ProductCard from "../../components/ProductCard";
 
@@ -11,7 +14,7 @@ function ProductScreen() {
 
     useEffect(() => {
         const wrapper = async () => {
-            const aquiredItems = await GetItemData();
+            const aquiredItems = GetItemDataFromSessionStorage();
             try {
                 setItems(FilterFindItem(aquiredItems, searchTerm));
                 setHeading(`Found results for '${searchTerm}'...`);

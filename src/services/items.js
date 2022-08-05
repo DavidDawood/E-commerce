@@ -9,8 +9,20 @@ export const GetItemData = async () => {
     });
     return itemList;
 };
+export const GetItemDataFromSessionStorage = () => {
+    const ProductPreloadValue = JSON.parse(
+        sessionStorage.getItem("ProductPreLoad"),
+    );
+    return ProductPreloadValue;
+};
 export const RemoveItemData = () => {};
 export const AddItemData = () => {};
+
+export const GetItemById = (itemList, id) => {
+    const foundItem = itemList.find((x) => x.id === id);
+    if (!foundItem) throw NoItemFound;
+    return foundItem;
+};
 
 export const FilterFindItem = (itemList, searchTerm) => {
     const filteredItems = itemList.filter((item) => {
