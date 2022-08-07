@@ -2,6 +2,12 @@ import { render, screen } from "@testing-library/react";
 import App from "./App";
 import { FilterFindItem, GetItemById } from "./services/items";
 import { NoItemFound } from "./services/errors";
+import {
+    RemoveCartItem,
+    AddCartItem,
+    AddItemCount,
+    RemoveItemCount,
+} from "./services/cart.js";
 
 const ItemLayout = [
     {
@@ -55,8 +61,31 @@ const calculator = {
     sellerLocation: ["StoreFront", "2586", "VIC", "Australia"],
 };
 
+const CartItemList = [
+    {
+        id: 23423,
+        quantity: 1,
+    },
+    {
+        id: 662,
+        quantity: 3,
+    },
+    {
+        id: 825136,
+        quantity: 5,
+    },
+];
+const itemAdd = {
+    id: 87453,
+};
+
+const itemRemove = {
+    id: 825136,
+    quantity: 5,
+};
+
 describe("Pure Function Testing", () => {
-    it("FilterSearch", () => {
+    it("Filter Search", () => {
         expect(FilterFindItem(ItemLayout, "Air F")).toStrictEqual([airFryer]);
         expect(FilterFindItem(ItemLayout, "c")).toStrictEqual([
             computer,
@@ -67,7 +96,7 @@ describe("Pure Function Testing", () => {
         );
     });
 
-    it("FindItemById", () => {
+    it("Find Item By Id", () => {
         expect(GetItemById(ItemLayout, "417x7rn3l24%%#L@km4")).toStrictEqual(
             airFryer,
         );
@@ -77,5 +106,38 @@ describe("Pure Function Testing", () => {
         expect(() => GetItemById(ItemLayout, "ID: 14")).toThrowError(
             NoItemFound,
         );
+    });
+
+    it("Add Cart Item", () => {
+        expect(AddCartItem(CartItemList, itemAdd)).toStrictEqual([
+            {
+                id: 23423,
+                quantity: 1,
+            },
+            {
+                id: 662,
+                quantity: 3,
+            },
+            {
+                id: 825136,
+                quantity: 5,
+            },
+            {
+                id: 87453,
+                quantity: 1,
+            },
+        ]);
+    });
+    it("Remove Cart Item", () => {
+        expect(RemoveCartItem(CartItemList, itemRemove)).toStrictEqual([
+            {
+                id: 23423,
+                quantity: 1,
+            },
+            {
+                id: 662,
+                quantity: 3,
+            },
+        ]);
     });
 });

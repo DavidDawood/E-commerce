@@ -13,6 +13,7 @@ function App() {
     const AddAllItemsToStorage = async () => {
         const aquiredItems = await GetItemData();
         sessionStorage.setItem("ProductPreLoad", JSON.stringify(aquiredItems));
+        sessionStorage.setItem("CartProducts", JSON.stringify([]));
     };
     useEffect(() => {
         AddAllItemsToStorage();

@@ -20,7 +20,7 @@ function ProductScreen() {
                 setHeading(`Found results for '${searchTerm}'...`);
             } catch (e) {
                 setHeading(e.message);
-                setItems([]);
+                setItems(aquiredItems);
             }
         };
         wrapper();

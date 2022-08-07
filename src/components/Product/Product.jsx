@@ -8,7 +8,7 @@ import styles from "./Product.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
-import { AddCartItem } from "../../services/cart";
+import { GetCartItems, AddCartItem } from "../../services/cart";
 
 function Product() {
     const navigate = useNavigate();
@@ -16,20 +16,32 @@ function Product() {
     const itemList = GetItemDataFromSessionStorage();
     const Product = GetItemById(itemList, ProductId);
     const variantName = useRef();
+
     const [image, setImage] = useState(Product.variants[0].img);
+    const [price, setPrice] = useState(Product.variants[0].price);
 
     const UpdateImageName = () => {
-        const GetPicture = () => {
-            const image = Product.variants.find(
+        const GetVariant = () => {
+            const variant = Product.variants.find(
                 (x) => x.name === variantName.current.value,
-            ).img;
-            return image;
+            );
+            return variant;
         };
-        setImage(GetPicture());
+        const variant = GetVariant();
+        setImage(variant.img);
+        setPrice(variant.price);
     };
+
+    // This is so only the variant will be added instead of all variants, to the cart list
     const AddItemToCart = () => {
         navigate("/shopping_cart");
-        AddCartItem(Product);
+        const filteredProduct = { ...Product };
+
+        const variant = Product.variants.find(
+            (x) => x.name === variantName.current.value,
+        );
+        filteredProduct.variants = [{ ...variant, quantity: 1 }];
+        AddCartItem(GetCartItems(), filteredProduct);
     };
 
     return (
@@ -42,7 +54,7 @@ function Product() {
                         {Product.sellerLocation[1]}, {Product.sellerLocation[2]}
                         , {Product.sellerLocation[3]}
                     </li>
-                    <li>Price: {Product.price}</li>
+                    <li>Price: ${price}</li>
                     <select onChange={UpdateImageName} ref={variantName}>
                         {Product.variants.map((x) => (
                             <option key={x.name} value={x.name}>
