@@ -25,7 +25,7 @@ function Cart() {
         return value;
     };
     const SubmitCart = () => {
-        alert(`You bought all items in the cart for ${GetTotalPrice()}`);
+        alert(`You bought all items in the cart for $${GetTotalPrice()}`);
         setCurrentCart([]);
     };
 
