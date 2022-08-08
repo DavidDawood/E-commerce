@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { GetCartItems, SaveCart } from "./../../services/cart";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 function Cart() {
+    const navigate = useNavigate();
     const InitalCart = () => {
         try {
             return GetCartItems();
@@ -32,7 +33,7 @@ function Cart() {
     const DisplayCart = () => {
         return (
             <div>
-                <h2>Total Price: {GetTotalPrice()}</h2>
+                <h2>Total Price: ${GetTotalPrice()}</h2>
                 {currentCart.map((x) =>
                     CartItem(x, setCurrentCart, currentCart),
                 )}
@@ -43,8 +44,13 @@ function Cart() {
     return (
         <div>
             <h1>Cart</h1>
-            {currentCart.length === 0 && "Cart is empty"}
-            {currentCart.length !== 0 && DisplayCart()}
+            <button onClick={() => navigate("/Search/")}>
+                Back to shopping
+            </button>
+            <p>
+                {currentCart.length === 0 && "Cart is empty"}
+                {currentCart.length !== 0 && DisplayCart()}
+            </p>
         </div>
     );
 }
