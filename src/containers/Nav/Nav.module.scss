@@ -22,10 +22,15 @@
             border-radius: 20px;
             text-align: center;
             margin: 0 30px;
-            background-color: $darkTertiary;
-            border: solid $teriary 4px;
+            background-color: $teriary;
+            border: solid $highlight 4px;
             font-family: $primaryFont;
             font-size: 30px;
+
+            color: $darkTertiary;
+            outline: none;
+
+            @extend %disableHyperLink;
         }
         &Mag {
             padding: 10px;
