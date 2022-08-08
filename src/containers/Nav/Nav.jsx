@@ -23,21 +23,26 @@ export function Nav() {
     };
 
     return (
-        <div>
-            <NavLink to={""}>
-                <FontAwesomeIcon icon={faHouse} size="2x" />
+        <div className={styles.Container}>
+            <NavLink to={""} className={styles.disableHeader}>
+                <h1>Little Astro's Supplies</h1>
             </NavLink>
-            <input
-                id="searchTermInput"
-                type="search"
-                onKeyDown={EnterHandler}
-                onChange={UpdateSearchTerm}
-                placeholder="Search..."
-            />
-            <NavLink to={`/Search/${searchTerm}`}>
-                <FontAwesomeIcon icon={faMagnifyingGlass} size="2x" />
-            </NavLink>
-            <NavLink to={"/shopping_cart"}>
+            <div className={styles.Container__Searchbar}>
+                <input
+                    id="searchTermInput"
+                    type="search"
+                    onKeyDown={EnterHandler}
+                    onChange={UpdateSearchTerm}
+                    placeholder="Search..."
+                />
+                <NavLink
+                    to={`/Search/${searchTerm}`}
+                    className={styles.Container__SearchbarMag}
+                >
+                    <FontAwesomeIcon icon={faMagnifyingGlass} size="2x" />
+                </NavLink>
+            </div>
+            <NavLink to={"/shopping_cart"} className={styles.disable}>
                 <FontAwesomeIcon icon={faShoppingCart} size="2x" />
             </NavLink>
         </div>

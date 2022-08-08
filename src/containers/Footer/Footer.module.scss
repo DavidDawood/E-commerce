@@ -1,0 +1,10 @@
+@import "./../../partials/palette";
+.Container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: $secondary;
+    border-top: 20px solid;
+    border-image: linear-gradient($primary, $secondary) 150 round;
+    height: 120px;
+}

@@ -1,0 +1,11 @@
+@import "./palette";
+@import "./fonts";
+%disableHyperLink {
+    font-family: $primaryFont;
+    &:active {
+        color: $darkTertiary;
+    }
+    &:visited {
+        color: $secondary;
+    }
+}

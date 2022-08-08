@@ -10,7 +10,7 @@ import {
 
 export function Footer() {
     return (
-        <div>
+        <div className={styles.Container}>
             <FontAwesomeIcon icon={faGripfire} size="5x" />
             <FontAwesomeIcon icon={faReact} size="5x" />
             <FontAwesomeIcon icon={faHtml5} size="5x" />

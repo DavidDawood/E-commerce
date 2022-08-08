@@ -1,0 +1,54 @@
+@import "./../../partials/palette";
+@import "./../../partials/fonts";
+@import "./../../partials/partial";
+
+.Container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: $secondary;
+    height: 80px;
+    border-bottom: 20px solid;
+    border-image: linear-gradient($secondary, $primary) 100 round;
+    &__Searchbar {
+        display: flex;
+        align-content: center;
+        align-items: center;
+        justify-content: space-around;
+
+        & > input {
+            width: 40vw;
+            height: 40px;
+            border-radius: 20px;
+            text-align: center;
+            margin: 0 30px;
+            background-color: $darkTertiary;
+            border: solid $teriary 4px;
+            font-family: $primaryFont;
+            font-size: 30px;
+        }
+        &Mag {
+            padding: 10px;
+            border-radius: 20px;
+            background-color: $teriary;
+            @extend %disableHyperLink;
+        }
+    }
+}
+.disable {
+    padding: 10px;
+    border-radius: 20px;
+    background-color: $teriary;
+    @extend %disableHyperLink;
+}
+.disableHeader {
+    font-family: $primaryFont;
+    font-size: 20px;
+    text-decoration: none;
+    &:active {
+        color: $teriary;
+    }
+    &:visited {
+        color: $teriary;
+    }
+}
