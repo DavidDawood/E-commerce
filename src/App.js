@@ -25,7 +25,7 @@ function App() {
     return (
         <div className="App">
             {isLoaded && (
-                <div>
+                <div className="App__Container">
                     {" "}
                     <Nav />
                     <Routes>

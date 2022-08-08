@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { GetCartItems, SaveCart } from "./../../services/cart";
 import { NavLink, useNavigate } from "react-router-dom";
+import styles from "./Cart.module.scss";
 
 function Cart() {
     const navigate = useNavigate();
@@ -42,7 +43,7 @@ function Cart() {
         );
     };
     return (
-        <div>
+        <div className={styles.Container}>
             <h1>Cart</h1>
             <button onClick={() => navigate("/Search/")}>
                 Back to shopping

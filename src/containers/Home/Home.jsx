@@ -2,7 +2,7 @@ import React from "react";
 import Carousel from "nuka-carousel/lib/carousel";
 import { GetItemDataFromSessionStorage } from "../../services/items";
 import { useNavigate } from "react-router-dom";
-
+import styles from "./Home.module.scss";
 function Home() {
     const DisplayItems = (count) => {
         const navigate = useNavigate();
@@ -40,7 +40,7 @@ function Home() {
             </Carousel>
         );
     };
-    return <div>{DisplayItems(3)}</div>;
+    return <div className={styles.Container}>{DisplayItems(3)}</div>;
 }
 
 export default Home;

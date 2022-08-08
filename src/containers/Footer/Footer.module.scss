@@ -7,4 +7,6 @@
     border-top: 20px solid;
     border-image: linear-gradient($primary, $secondary) 150 round;
     height: 120px;
+
+    box-shadow: 0 50vh 0 50vh $secondary;
 }

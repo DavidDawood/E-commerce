@@ -29,7 +29,7 @@
 
             color: $darkTertiary;
             outline: none;
-
+            min-width: 500px;
             @extend %disableHyperLink;
         }
         &Mag {
@@ -47,6 +47,7 @@
     @extend %disableHyperLink;
 }
 .disableHeader {
+    min-width: 200px;
     font-family: $primaryFont;
     font-size: 20px;
     text-decoration: none;
