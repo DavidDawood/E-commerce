@@ -22,7 +22,7 @@
             border-radius: 20px;
             text-align: center;
             margin: 0 30px;
-            background-color: $teriary;
+            background-color: $tertiary;
             border: solid $highlight 4px;
             font-family: $primaryFont;
             font-size: 30px;
@@ -30,12 +30,13 @@
             color: $darkTertiary;
             outline: none;
             min-width: 500px;
+
             @extend %disableHyperLink;
         }
         &Mag {
             padding: 10px;
             border-radius: 20px;
-            background-color: $teriary;
+            background-color: $tertiary;
             @extend %disableHyperLink;
         }
     }
@@ -43,7 +44,7 @@
 .disable {
     padding: 10px;
     border-radius: 20px;
-    background-color: $teriary;
+    background-color: $tertiary;
     @extend %disableHyperLink;
 }
 .disableHeader {
@@ -52,9 +53,12 @@
     font-size: 20px;
     text-decoration: none;
     &:active {
-        color: $teriary;
+        color: $tertiary;
     }
     &:visited {
-        color: $teriary;
+        color: $tertiary;
+    }
+    &:hover {
+        color: $darkTertiary;
     }
 }

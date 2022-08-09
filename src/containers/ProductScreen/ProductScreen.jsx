@@ -27,7 +27,7 @@ function ProductScreen() {
     }, [searchTerm]);
 
     return (
-        <div>
+        <div className={styles.Container}>
             <div>{searchTerm && <h2>{heading}</h2>}</div>
             <div className={styles.grid}>
                 {items.map((item) => (

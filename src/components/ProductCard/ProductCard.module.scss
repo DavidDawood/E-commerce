@@ -1,0 +1,17 @@
+@import "./../../partials/palette";
+@import "./../../partials/fonts";
+.Container {
+    width: 40vw;
+    height: 60vh;
+    text-align: center;
+
+    &__image {
+        & > img {
+            width: 30vw;
+            max-height: 30vw;
+            border-radius: 50px;
+            box-shadow: 2px 5px 5px 5px $darkTertiary;
+            border: solid 2px $highlight;
+        }
+    }
+}

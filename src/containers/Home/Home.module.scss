@@ -1,3 +1,17 @@
+@import "./../../partials/palette";
 .Container {
     min-height: 70vh;
+
+    &__Carosel {
+        &_button {
+            background-color: transparent;
+            border: none;
+        }
+        &_image {
+            width: 400px;
+            width: 400px;
+            border-radius: 50px;
+            border: 2px solid $darkTertiary;
+        }
+    }
 }

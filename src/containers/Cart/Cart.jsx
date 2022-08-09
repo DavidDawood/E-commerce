@@ -2,6 +2,11 @@ import React, { useEffect, useState } from "react";
 import { GetCartItems, SaveCart } from "./../../services/cart";
 import { NavLink, useNavigate } from "react-router-dom";
 import styles from "./Cart.module.scss";
+import {
+    AddAllItemsToStorage,
+    GetItemDataFromSessionStorage,
+    RemoveItemData,
+} from "../../services/items";
 
 function Cart() {
     const navigate = useNavigate();
@@ -26,9 +31,11 @@ function Cart() {
         value = value.toFixed(2);
         return value;
     };
-    const SubmitCart = () => {
-        alert(`You bought all items in the cart for $${GetTotalPrice()}`);
+    const SubmitCart = async () => {
+        await RemoveItemData(currentCart);
         setCurrentCart([]);
+        await AddAllItemsToStorage();
+        alert(`You bought all items in the cart for $${GetTotalPrice()}`);
     };
 
     const DisplayCart = () => {
@@ -48,10 +55,8 @@ function Cart() {
             <button onClick={() => navigate("/Search/")}>
                 Back to shopping
             </button>
-            <p>
-                {currentCart.length === 0 && "Cart is empty"}
-                {currentCart.length !== 0 && DisplayCart()}
-            </p>
+            {currentCart.length === 0 && "Cart is empty"}
+            {currentCart.length !== 0 && DisplayCart()}
         </div>
     );
 }
@@ -71,8 +76,15 @@ function CartItem(Product, setCurrentCart, currentCart) {
         const variant = cloneProduct.variants.find(
             (x) => x.name === variantName,
         );
+
+        const currentItemsVariantCount = GetItemDataFromSessionStorage()
+            .find((x) => x.id === Product.id)
+            .variants.find((x) => x.name === variantName);
+
         ++cloneProduct.quantity;
         ++variant.quantity;
+        if (variant.quantity > currentItemsVariantCount.quantity)
+            variant.quantity = currentItemsVariantCount.quantity;
 
         setCurrentCart(cartClone);
     };

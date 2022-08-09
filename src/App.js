@@ -7,18 +7,17 @@ import Home from "./containers/Home";
 import ProductScreen from "./containers/ProductScreen/ProductScreen";
 import Product from "./components/Product";
 import { useEffect, useState } from "react";
-import { GetItemData } from "./services/items";
+import { AddAllItemsToStorage } from "./services/items";
 
 function App() {
     const [isLoaded, setIsLoaded] = useState(false);
-    const AddAllItemsToStorage = async () => {
-        const aquiredItems = await GetItemData();
-        sessionStorage.setItem("ProductPreLoad", JSON.stringify(aquiredItems));
-        sessionStorage.setItem("CartProducts", JSON.stringify([]));
-        setIsLoaded(true);
-    };
+
     useEffect(() => {
-        AddAllItemsToStorage();
+        const wrapper = async () => {
+            await AddAllItemsToStorage();
+            setIsLoaded(true);
+        };
+        wrapper();
     }, []);
 
     // dont load the website till we have gathered item data or else we wont be able to load the Carousel
