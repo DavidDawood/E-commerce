@@ -41,21 +41,29 @@ function Cart() {
     const DisplayCart = () => {
         return (
             <div>
-                <h2>Total Price: ${GetTotalPrice()}</h2>
+                <p>Total Price: ${GetTotalPrice()}</p>
                 {currentCart.map((x) =>
                     CartItem(x, setCurrentCart, currentCart),
                 )}
-                <button onClick={() => SubmitCart()}>Purcharse</button>
+                <button
+                    className={styles.Container__button}
+                    onClick={() => SubmitCart()}
+                >
+                    <p>Purcharse</p>
+                </button>
             </div>
         );
     };
     return (
         <div className={styles.Container}>
-            <h1>Cart</h1>
-            <button onClick={() => navigate("/Search/")}>
-                Back to shopping
+            <h1 className={styles.Container__Title}>Cart</h1>
+            <button
+                className={styles.Container__button}
+                onClick={() => navigate("/Search/")}
+            >
+                <p>Back to shopping</p>
             </button>
-            {currentCart.length === 0 && "Cart is empty"}
+            {currentCart.length === 0 && <p>Cart is empty</p>}
             {currentCart.length !== 0 && DisplayCart()}
         </div>
     );
@@ -117,20 +125,32 @@ function CartItem(Product, setCurrentCart, currentCart) {
                 Shipping from: {Product.sellerLocation[0]},{" "}
                 {Product.sellerLocation[1]}, {Product.sellerLocation[2]},{" "}
                 {Product.sellerLocation[3]}
+                Price: ${GetTotalVariantPrice()}
             </p>
-            <p>Price: ${GetTotalVariantPrice()}</p>
-            Variants:
-            <ul>
-                {Product.variants.map((x) => (
-                    <li key={x.name}>
-                        {x.name} :{" "}
-                        <button onClick={() => RemoveVariant(x.name)}>-</button>{" "}
-                        {x.quantity}{" "}
-                        <button onClick={() => AddVariant(x.name)}>+</button> x
-                        ${x.price}
-                    </li>
-                ))}
-            </ul>
+            <p>
+                Variants:
+                <ul>
+                    {Product.variants.map((x) => (
+                        <li key={x.name}>
+                            {x.name} :{" "}
+                            <button
+                                className={styles.Container__button}
+                                onClick={() => RemoveVariant(x.name)}
+                            >
+                                -
+                            </button>{" "}
+                            {x.quantity}{" "}
+                            <button
+                                className={styles.Container__button}
+                                onClick={() => AddVariant(x.name)}
+                            >
+                                +
+                            </button>{" "}
+                            x ${x.price}
+                        </li>
+                    ))}
+                </ul>
+            </p>
         </div>
     );
 }

@@ -1,7 +1,41 @@
 @import "./../../partials/palette";
 @import "./../../partials/fonts";
+@import "./../../partials/partial";
 .Container {
-    width: 10vw;
-    height: 10vh;
-    box-shadow: 0px 0px 5px 5px $darkTertiary;
+    text-align: center;
+
+    & > button {
+        @extend %defaultButton;
+    }
+
+    & > ul {
+        list-style: none;
+        padding: 0px;
+        margin: 0px;
+    }
+
+    &__image {
+        width: 30vw;
+        min-width: 300px;
+        border: solid 2px $highlight;
+        border-radius: 50px;
+        margin-top: 30px;
+        box-shadow: 5px 5px 10px 3px $darkTertiary;
+    }
+    &__select {
+        padding: 10px;
+        border-radius: 20px;
+        border: 3px solid $darkTertiary;
+        background-color: $tertiary;
+        font-family: $primaryFont;
+        font-size: 15px;
+        &:hover {
+            cursor: pointer;
+        }
+    }
+    &__Cart {
+        &:hover {
+            cursor: pointer;
+        }
+    }
 }

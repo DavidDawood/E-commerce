@@ -29,11 +29,13 @@
     }
 }
 p {
-    font-family: $primaryFont;
+    font-family: $secondaryFont;
+    font-weight: bold;
+    font-size: 25px;
 }
 h1 {
     font-family: $primaryFont;
 }
 h2 {
-    font-family: $secondaryFont;
+    font-family: $primaryFont;
 }

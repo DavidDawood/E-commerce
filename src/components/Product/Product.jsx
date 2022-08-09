@@ -59,30 +59,40 @@ function Product() {
 
     return (
         <div className={styles.Container}>
-            <span>
-                <h2>{Product.name}</h2>
-                <ul>
-                    <li>
+            <h2>{Product.name}</h2>
+            <ul>
+                <li>
+                    <p>
                         Shipping from: {Product.sellerLocation[0]},{" "}
                         {Product.sellerLocation[1]}, {Product.sellerLocation[2]}
                         , {Product.sellerLocation[3]}
-                    </li>
-                    <li>Price: ${price}</li>
-                    <li>Stock Left: x{quantity}</li>
-                    <select onChange={UpdateImageName} ref={variantName}>
+                    </p>
+                </li>
+                <li>
+                    <p>Price: ${price}</p>
+                </li>
+                <li>
+                    <p>Stock Left: x{quantity}</p>
+                </li>
+                <li>
+                    <select
+                        className={styles.Container__select}
+                        onChange={UpdateImageName}
+                        ref={variantName}
+                    >
                         {Product.variants.map((x) => (
                             <option key={x.name} value={x.name}>
                                 {x.name}
                             </option>
                         ))}
-                    </select>
-                </ul>
-                <button onClick={AddItemToCart}>
-                    Add To Cart{" "}
-                    <FontAwesomeIcon icon={faShoppingCart} size="2x" />
-                </button>
-            </span>
-            <img src={image} alt="" />
+                    </select>{" "}
+                </li>
+                <img className={styles.Container__image} src={image} alt="" />
+            </ul>{" "}
+            <button className={styles.Container__Cart} onClick={AddItemToCart}>
+                <p>Add To Cart</p>{" "}
+                <FontAwesomeIcon icon={faShoppingCart} size="2x" />
+            </button>
         </div>
     );
 }

@@ -1,3 +1,10 @@
+@import "./../../partials/fonts";
+@import "./../../partials/palette";
+@import "./../../partials/partial";
 .Container {
     min-height: 70vh;
+
+    &__button {
+        @extend %defaultButton;
+    }
 }

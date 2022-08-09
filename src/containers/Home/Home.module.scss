@@ -6,6 +6,9 @@
         &_button {
             background-color: transparent;
             border: none;
+            &:hover {
+                cursor: pointer;
+            }
         }
         &_image {
             width: 400px;
