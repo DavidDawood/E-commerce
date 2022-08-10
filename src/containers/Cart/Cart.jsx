@@ -125,30 +125,30 @@ function CartItem(Product, setCurrentCart, currentCart) {
                 Shipping from: {Product.sellerLocation[0]},{" "}
                 {Product.sellerLocation[1]}, {Product.sellerLocation[2]},{" "}
                 {Product.sellerLocation[3]}
-                <p>Price: ${GetTotalVariantPrice()}</p>
+                Price: ${GetTotalVariantPrice()}
+                Variants:
+                <ul>
+                    {Product.variants.map((x) => (
+                        <li key={x.name}>
+                            {x.name} :{" "}
+                            <button
+                                className={styles.Container__button}
+                                onClick={() => RemoveVariant(x.name)}
+                            >
+                                -
+                            </button>{" "}
+                            {x.quantity}{" "}
+                            <button
+                                className={styles.Container__button}
+                                onClick={() => AddVariant(x.name)}
+                            >
+                                +
+                            </button>{" "}
+                            x ${x.price}
+                        </li>
+                    ))}
+                </ul>
             </p>
-            Variants:
-            <ul>
-                {Product.variants.map((x) => (
-                    <li key={x.name}>
-                        {x.name} :{" "}
-                        <button
-                            className={styles.Container__button}
-                            onClick={() => RemoveVariant(x.name)}
-                        >
-                            -
-                        </button>{" "}
-                        {x.quantity}{" "}
-                        <button
-                            className={styles.Container__button}
-                            onClick={() => AddVariant(x.name)}
-                        >
-                            +
-                        </button>{" "}
-                        x ${x.price}
-                    </li>
-                ))}
-            </ul>
         </div>
     );
 }

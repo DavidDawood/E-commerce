@@ -1,5 +1,6 @@
 export const GetCartItems = () => {
     const items = JSON.parse(sessionStorage.getItem("CartProducts"));
+    if (!items) return [];
     return items;
 };
 
