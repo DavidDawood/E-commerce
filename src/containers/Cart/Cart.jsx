@@ -125,7 +125,7 @@ function CartItem(Product, setCurrentCart, currentCart) {
                 Shipping from: {Product.sellerLocation[0]},{" "}
                 {Product.sellerLocation[1]}, {Product.sellerLocation[2]},{" "}
                 {Product.sellerLocation[3]}
-                Price: ${GetTotalVariantPrice()}
+                <p>Price: ${GetTotalVariantPrice()}</p>
             </p>
             Variants:
             <ul>
