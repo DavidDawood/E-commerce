@@ -21,7 +21,7 @@ function Home() {
             <div className={styles.Container}>
                 <Carousel
                     adaptiveHeight={false}
-                    slidesToShow={1}
+                    slidesToShow={3}
                     cellAlign="center"
                     wrapAround={true}
                     className={styles.Container__Carosel}

@@ -3,6 +3,7 @@
 @import "./../../partials/partial";
 .Container {
     min-height: 70vh;
+    margin-left: 50px;
 
     &__button {
         @extend %defaultButton;

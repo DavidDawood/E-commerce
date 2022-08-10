@@ -18,6 +18,7 @@ function Product() {
     const Product = GetItemById(itemList, ProductId);
     const variantName = useRef();
 
+    // yes im aware i can pass this as an object but by the time i recovered my two remaining brain cells this was already implemented
     const [image, setImage] = useState(Product.variants[0].img);
     const [price, setPrice] = useState(Product.variants[0].price);
     const [quantity, setQuantity] = useState(Product.variants[0].quantity);

@@ -2,8 +2,9 @@
 @import "./partials/fonts";
 .App {
     min-height: 600px;
-    min-width: 1000px;
+    min-width: 1500px;
     background-color: $primary;
+
     /* clears the 'X' from Internet Explorer */
     input[type="search"]::-ms-clear {
         display: none;

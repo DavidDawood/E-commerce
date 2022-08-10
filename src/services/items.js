@@ -1,5 +1,6 @@
 import { firebase } from "../firebase.js";
 import {
+    addDoc,
     collection,
     deleteDoc,
     doc,
@@ -19,7 +20,6 @@ export const GetItemData = async () => {
 export const AddAllItemsToStorage = async () => {
     const aquiredItems = await GetItemData();
     sessionStorage.setItem("ProductPreLoad", JSON.stringify(aquiredItems));
-    sessionStorage.setItem("CartProducts", JSON.stringify([]));
 };
 export const GetItemDataFromSessionStorage = () => {
     const ProductPreloadValue = JSON.parse(
@@ -52,7 +52,16 @@ export const RemoveItemData = async (WholeCart) => {
         }
     });
 };
-export const AddItemData = () => {};
+
+// NOTE, THIS IS CURRENTLY NON FUNCTIONAL AND PURELY IS USED AS A TEMPORARY DUPLICATE THING TO MAKE MY LIFE EASIER ADDING NEW DATA
+export const AddItemData = async () => {
+    const duplicateItem = "svYvTUD5sBB4kPJJ2Nal";
+    const docRef = doc(firebase, "items", duplicateItem);
+    const docObj = await (await getDoc(docRef)).data();
+
+    console.log("added");
+    addDoc(collection(firebase, "items"), docObj);
+};
 
 export const GetItemById = (itemList, id) => {
     const foundItem = itemList.find((x) => x.id === id);

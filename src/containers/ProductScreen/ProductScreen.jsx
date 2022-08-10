@@ -28,8 +28,8 @@ function ProductScreen() {
 
     return (
         <div className={styles.Container}>
-            <div>{searchTerm && <h2>{heading}</h2>}</div>
-            <div className={styles.grid}>
+            {searchTerm && <h2>{heading}</h2>}
+            <div className={styles.Container__grid}>
                 {items.map((item) => (
                     <ProductCard key={item.id} Product={item}></ProductCard>
                 ))}

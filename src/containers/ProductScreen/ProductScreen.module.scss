@@ -1,0 +1,8 @@
+.Container {
+    text-align: center;
+    &__grid {
+        display: grid;
+        align-items: center;
+        grid-template-columns: repeat(3, 1fr);
+    }
+}

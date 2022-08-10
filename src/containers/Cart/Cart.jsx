@@ -49,7 +49,7 @@ function Cart() {
                     className={styles.Container__button}
                     onClick={() => SubmitCart()}
                 >
-                    <p>Purcharse</p>
+                    <p>Purchase</p>
                 </button>
             </div>
         );
@@ -127,30 +127,28 @@ function CartItem(Product, setCurrentCart, currentCart) {
                 {Product.sellerLocation[3]}
                 Price: ${GetTotalVariantPrice()}
             </p>
-            <p>
-                Variants:
-                <ul>
-                    {Product.variants.map((x) => (
-                        <li key={x.name}>
-                            {x.name} :{" "}
-                            <button
-                                className={styles.Container__button}
-                                onClick={() => RemoveVariant(x.name)}
-                            >
-                                -
-                            </button>{" "}
-                            {x.quantity}{" "}
-                            <button
-                                className={styles.Container__button}
-                                onClick={() => AddVariant(x.name)}
-                            >
-                                +
-                            </button>{" "}
-                            x ${x.price}
-                        </li>
-                    ))}
-                </ul>
-            </p>
+            Variants:
+            <ul>
+                {Product.variants.map((x) => (
+                    <li key={x.name}>
+                        {x.name} :{" "}
+                        <button
+                            className={styles.Container__button}
+                            onClick={() => RemoveVariant(x.name)}
+                        >
+                            -
+                        </button>{" "}
+                        {x.quantity}{" "}
+                        <button
+                            className={styles.Container__button}
+                            onClick={() => AddVariant(x.name)}
+                        >
+                            +
+                        </button>{" "}
+                        x ${x.price}
+                    </li>
+                ))}
+            </ul>
         </div>
     );
 }

@@ -13,6 +13,7 @@ export const RemoveCartItem = (itemList, item) => {
 export const AddCartItem = (itemList, item) => {
     const foundDuplicate = itemList.find((x) => x.id === item.id);
     const [...rest] = itemList;
+
     if (foundDuplicate) {
         ++foundDuplicate.quantity;
         const variantDup = foundDuplicate.variants.find(
@@ -21,14 +22,16 @@ export const AddCartItem = (itemList, item) => {
 
         if (variantDup) ++variantDup.quantity;
         else foundDuplicate.variants.push(item.variants[0]);
-    } else rest.push({ ...item, quantity: 1 });
-
+    } else {
+        rest.push({ ...item, quantity: 1 });
+    }
     SaveCart(rest);
     return rest;
 };
 export const SaveCart = (itemList) => {
     if (sessionStorage.getItem("CartProducts"))
         sessionStorage.removeItem("CartProducts");
+
     sessionStorage.setItem("CartProducts", JSON.stringify(itemList));
 };
 
