@@ -1,5 +1,32 @@
 # E-Commerece
 
+## Description
+
+-   A storefront for space themed stationary, decided to change the look from the usual dull dark gray theme to a more warm welcoming pleasent pink
+-   Website connects to firebase data base allowing for users to 'purchase' products, including quantity, variants and more!
+
+## Preview
+
+![frontPageHome](./images//E-commerce-1.png)
+![productListScreen](./images//E-commerce-2.png)
+![independantProduct](./images/E-commerce-3.png)
+![cartPage](./images/E-commerce-4.png)
+
+## Setup
+
+-   Simply use the following commands
+-   To install
+
+```
+npm install
+```
+
+-   To run the page, like any other react website
+
+```
+npm start
+```
+
 ## Developer Notes
 
 ### Issues that accured

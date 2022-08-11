@@ -118,8 +118,11 @@ function CartItem(Product, setCurrentCart, currentCart) {
     };
     return (
         <div key={Product.id}>
-            <NavLink to={`/Product/${Product.id}`}>
-                <h2>{Product.name}</h2>
+            <NavLink
+                className={styles.HeaderLink}
+                to={`/Product/${Product.id}`}
+            >
+                <h2> {Product.name}</h2>
             </NavLink>
             <p>
                 Shipping from: {Product.sellerLocation[0]},{" "}

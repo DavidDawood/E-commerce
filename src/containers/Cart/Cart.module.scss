@@ -9,3 +9,19 @@
         @extend %defaultButton;
     }
 }
+.HeaderLink {
+    font-family: $primaryFont;
+    text-decoration: none;
+    &:active {
+        color: $tertiary;
+    }
+    &:visited {
+        color: $tertiary;
+    }
+    &:hover {
+        color: $darkTertiary;
+    }
+    &:link {
+        color: $tertiary;
+    }
+}
